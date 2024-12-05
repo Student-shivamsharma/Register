@@ -39,18 +39,18 @@ const Registration = () => {
   let [domain_name, setDomain] = useState("");
   let [error, setError] = useState("");
   let [isLoading, setIsLoading] = useState(false);
-  const [recaptchaToken, setRecaptchaToken] = useState("");
-  const [next, setNext] = useState(false);
+  let [recaptchaToken, setRecaptchaToken] = useState("");
+  let [next, setNext] = useState(false);
 
   let handleRecaptchaChange = (token) => {
-    const trimmedToken = token.trim();
+    let trimmedToken = token.trim();
     console.log(trimmedToken);
     setRecaptchaToken(trimmedToken);
   };
 
 
 
-  let handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (valid2()) {
       setIsLoading(true);
