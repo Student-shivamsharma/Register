@@ -81,17 +81,17 @@ const Registration = () => {
         ],
         recaptcha_response: recaptchaToken,
       };
-      console.log(formData);
-      console.log(JSON.stringify(formData, null, 2));
+      //console.log(formData)
+      //console.log(JSON.stringify(formData, null, 2));
 
       try {
         const response = await axios.post(
           "https://form-event.onrender.com/register",
           formData
         );
-        console.log("res", response);
-        console.log(response.data);
-        console.log(recaptchaToken);
+        //console.log("res", response);
+       // console.log(response.data);
+       // console.log(recaptchaToken);
         toast.success("Registration Successful");
         clearField();
       } 
