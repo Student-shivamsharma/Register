@@ -145,11 +145,6 @@ const Registration = () => {
       return false;
     }
 
-    if (!student_no.startsWith("23") || !student_no.startsWith("22")) {
-      toast.error("Student number should start with  23 or 22");
-      return false;
-    }
-
     return true;
   };
   let valid2 = () => {
