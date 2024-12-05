@@ -38,11 +38,11 @@ const Registration = () => {
   const [team_name, setteamName] = useState("");
   const [domain_name, setDomain] = useState("");
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  let [isLoading, setIsLoading] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState("");
   const [next, setNext] = useState(false);
 
-  const handleRecaptchaChange = (token) => {
+  let handleRecaptchaChange = (token) => {
     const trimmedToken = token.trim();
     console.log(trimmedToken);
     setRecaptchaToken(trimmedToken);
@@ -50,7 +50,7 @@ const Registration = () => {
 
 
 
-  const handleSubmit = async (e) => {
+  let handleSubmit = async (e) => {
     e.preventDefault();
     if (valid2()) {
       setIsLoading(true);
@@ -113,13 +113,13 @@ const Registration = () => {
     }
   };
 
-  const handleNext = () => {
+  let handleNext = () => {
     if (valid()) {
       setNext(true);
     }
   };
 
-  const valid = () => {
+  let valid = () => {
     if (
       team_name === "" ||
       domain_name === "" ||
@@ -152,7 +152,7 @@ const Registration = () => {
 
     return true;
   };
-  const valid2 = () => {
+  let valid2 = () => {
     if (
       team_name === "" ||
       Name2 === "" ||
@@ -185,7 +185,7 @@ const Registration = () => {
     return true;
   };
 
-  const clearField = () => {
+  let clearField = () => {
     name = "",
     domain_name = "",
       email = "",
