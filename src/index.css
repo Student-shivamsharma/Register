@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* tailwind */
+
+body{
+  background-color: black;
+}
+
+input::placeholder{
+  color : white;
+  background-color: black;
+}
+
+input:-webkit-autofill {
+  background-color: inherit;
+  -webkit-box-shadow: 0 0 0 1000px inherit inset;
+}
+
+
+@media (max-width : 450px){
+  input {
+    padding: 10px;
+  }
+}
