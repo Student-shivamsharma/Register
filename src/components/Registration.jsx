@@ -531,6 +531,7 @@ const Registration = () => {
                 <div className="flex justify-center items-center mt-3 z-50">
                   <ReCAPTCHA
                     sitekey="6Lcd2CMpAAAAAKLqwdxjTgnWwzSgAGEgtl0BVOng"
+                    // sitekey="6Lcd2CMpAAAAAKLqwdxjTgnWwzSgAGEgtl0BVOng"
                     onChange={handleRecaptchaChange}
                   />
                 </div>
