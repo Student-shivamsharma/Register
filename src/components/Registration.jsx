@@ -91,8 +91,8 @@ const Registration = () => {
           "https://form-event.onrender.com/register",
           formData
         );
-        //console.log("res", response);
-       // console.log(response.data);
+        // console.log("res", response);
+       console.log(response.data);
        // console.log(recaptchaToken);
         toast.success("Registration Successful");
         clearField();
