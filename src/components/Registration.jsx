@@ -91,25 +91,29 @@ const Registration = () => {
           "https://form-event.onrender.com/register",
           formData
         );
-        // console.log("res", response);
+        console.log("response" ,response);
        console.log(response.data);
-       // console.log(recaptchaToken);
+       console.log(response.message);
         toast.success("Registration Successful");
         clearField();
       } 
       catch (error) {
-        let errorMessage = "Something went wrong!";
-        if (error.response) {
-          errorMessage = error.response.data?.message || "try again with valid details";
-        } else if (error.request) {
-          errorMessage =
-            "No response from server. Please check your internet connection.";
-        } else {
-          errorMessage = error.message;
-        }
-        toast.error(errorMessage);
-        setError(errorMessage);
-      } finally {
+      //   console.log("error" ,error);
+      //  console.log(error.message);
+      //  console.log(error.response.data.detail);
+      //  console.log("arr" , error.response.data.detail[0].msg);
+       
+      //   toast.error(error.response.data.detail);
+      //   setError(error.message);
+      if (error.response && error.response.data) {
+        const errorMsg = error.response.data.detail[0].msg; 
+        toast.error(errorMsg);  toast
+      } else {
+        toast.error('An unexpected error occurred');
+      }
+      }
+    
+      finally {
         setIsLoading(false);
       }
     }
@@ -395,7 +399,7 @@ const Registration = () => {
                   backgroundImage: `url(${button})`,
                 }}
               >
-                <p className="p-2 z-50"> Next</p>
+                <p className="p-2 z-50">Add Member</p>
               </div>
             </div>
 
