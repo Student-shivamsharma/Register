@@ -237,7 +237,7 @@ const Registration = () => {
           <span>CODE THE FRAME TO WIN EXCITING REWARDS</span>
         </div>
 
-        <div className="backdrop-blur-xl bg-[rgb(7,12,35)] max-[800px]:top-0 max-w-sm sm:max-w-xl mx-auto my-auto px-4 sm:px-20 pt-6 h-auto rounded-2xl m-10">
+        <div className="backdrop-blur-xl bg-[rgb(7,12,35)]  max-[800px]:top-0 max-w-sm sm:max-w-xl mx-auto my-auto px-4 sm:px-20 pt-6 h-auto rounded-2xl m-10">
           <div className="text-center">
             <h1 className="text-3xl sm:text-3xl font-poppins font-semibold text-[rgb(149,197,244)]">
               REGISTER HERE
@@ -400,7 +400,7 @@ const Registration = () => {
 
               <div
                 onClick={handleNext}
-                className="relative mx-auto left-32  z-2 text-center font-albert font-semibold text-xl md:text-2xl shadow-sm text-black py-5 px-8 bg-no-repeat bg-center bg-contain w-fit transform hover:scale-105 transition-all ease-in-out delay-0 duration-3000 cursor-pointer z-50"
+                className="relative mx-auto mt-4 mb-2  z-2 text-center font-albert font-semibold text-xl md:text-2xl shadow-sm text-black py-5 px-8 bg-no-repeat bg-center bg-contain w-fit transform hover:scale-105 transition-all ease-in-out delay-0 duration-3000 cursor-pointer z-50"
                 style={{
                   backgroundImage: `url(${button})`,
                 }}
