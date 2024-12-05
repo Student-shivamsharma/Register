@@ -79,7 +79,7 @@ const Registration = () => {
         recaptcha_response: recaptchaToken,
       };
       //console.log(formData)
-      //console.log(JSON.stringify(formData, null, 2));
+      console.log(JSON.stringify(formData, null, 2));
 
       try {
         const response = await axios.post(
@@ -91,26 +91,27 @@ const Registration = () => {
         console.log(response.message);
         toast.success("Registration Successful");
         clearField();
-      } catch (error) {
-        //   console.log("error" ,error);
-        //  console.log(error.message);
-        //  console.log(error.response.data.detail);
+      }
+       catch (error) {
+          console.log("error" ,error);
+         console.log(error.message);
+         console.log(error.response.data.detail);
         //  console.log("arr" , error.response.data.detail[0].msg);
-
-        //   toast.error(error.response.data.detail);
-        //   setError(error.message);
-        if (
-          error.response.data.detail == "Invalid reCAPTCHA. Please try again."
-        ) {
-          toast.error("Invalid Captcha. Try Again!");
-        }
-        if (error.response && error.response.data) {
-          const errorMsg = error.response.data.detail[0].msg;
-          toast.error(errorMsg);
-          toast;
-        } else {
-          toast.error("An unexpected error occurred");
-        }
+           toast.error()
+          toast.error(error.response.data.detail);
+          setError(error.message);
+        // if (
+        //   error.response.data.detail == "Invalid reCAPTCHA. Please try again."
+        // ) {
+        //   toast.error("Invalid Captcha. Try Again!");
+        // }
+        // if (error.response && error.response.data) {
+        //   const errorMsg = error.response.data.detail[0].msg;
+        //   toast.error(errorMsg);
+        //   toast;
+        // } else {
+        //   toast.error("An unexpected error occurred");
+        // }
       } finally {
         setIsLoading(false);
       }
