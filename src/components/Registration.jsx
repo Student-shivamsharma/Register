@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUserPlus, FaUser, FaHome } from "react-icons/fa";
@@ -18,32 +20,32 @@ import Loading from "./Loading";
 
 
 const Registration = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [student_no, setStudentNumber] = useState("");
-  const [mobile, setContact] = useState("");
-  const [gender, setGender] = useState("");
-  const [branch, setBranch] = useState("");
-  const [unstop, setUnstop] = useState("");
-  const [residence, setResidence] = useState("");
+  let [name, setName] = useState("");
+  let [email, setEmail] = useState("");
+  let [student_no, setStudentNumber] = useState("");
+  let [mobile, setContact] = useState("");
+  let [gender, setGender] = useState("");
+  let [branch, setBranch] = useState("");
+  let [unstop, setUnstop] = useState("");
+  let [residence, setResidence] = useState("");
 
-  const [Name2, setName2] = useState("");
-  const [Email2, setEmail2] = useState("");
-  const [StudentNumber2, setStudentNumber2] = useState("");
-  const [Contact2, setContact2] = useState("");
-  const [gender2, setgender2] = useState("");
-  const [Branch2, setBranch2] = useState("");
-  const [unstop2, setunstop2] = useState("");
-  const [Residence2, setResidence2] = useState("");
-  const [team_name, setteamName] = useState("");
-  const [domain_name, setDomain] = useState("");
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [recaptchaToken, setRecaptchaToken] = useState("");
-  const [next, setNext] = useState(false);
+  let [Name2, setName2] = useState("");
+  let [Email2, setEmail2] = useState("");
+  let [StudentNumber2, setStudentNumber2] = useState("");
+  let [Contact2, setContact2] = useState("");
+  let [gender2, setgender2] = useState("");
+  let [Branch2, setBranch2] = useState("");
+  let [unstop2, setunstop2] = useState("");
+  let [Residence2, setResidence2] = useState("");
+  let [team_name, setteamName] = useState("");
+  let [domain_name, setDomain] = useState("");
+  let [error, setError] = useState("");
+  let [isLoading, setIsLoading] = useState(false);
+  let [recaptchaToken, setRecaptchaToken] = useState("");
+  let [next, setNext] = useState(false);
 
-  const handleRecaptchaChange = (token) => {
-    const trimmedToken = token.trim();
+  let handleRecaptchaChange = (token) => {
+    let trimmedToken = token.trim();
     console.log(trimmedToken);
     setRecaptchaToken(trimmedToken);
   };
@@ -81,17 +83,17 @@ const Registration = () => {
         ],
         recaptcha_response: recaptchaToken,
       };
-      console.log(formData);
-      console.log(JSON.stringify(formData, null, 2));
+      //console.log(formData)
+      //console.log(JSON.stringify(formData, null, 2));
 
       try {
         const response = await axios.post(
           "https://form-event.onrender.com/register",
           formData
         );
-        console.log("res", response);
-        console.log(response.data);
-        console.log(recaptchaToken);
+        //console.log("res", response);
+       // console.log(response.data);
+       // console.log(recaptchaToken);
         toast.success("Registration Successful");
         clearField();
       } 
@@ -113,13 +115,13 @@ const Registration = () => {
     }
   };
 
-  const handleNext = () => {
+  let handleNext = () => {
     if (valid()) {
       setNext(true);
     }
   };
 
-  const valid = () => {
+  let valid = () => {
     if (
       team_name === "" ||
       domain_name === "" ||
@@ -145,14 +147,9 @@ const Registration = () => {
       return false;
     }
 
-    if (!student_no.startsWith("23")) {
-      toast.error("Student number should start with  23");
-      return false;
-    }
-
     return true;
   };
-  const valid2 = () => {
+  let valid2 = () => {
     if (
       team_name === "" ||
       Name2 === "" ||
@@ -185,7 +182,7 @@ const Registration = () => {
     return true;
   };
 
-  const clearField = () => {
+  let clearField = () => {
     name = "",
     domain_name = "",
       email = "",
