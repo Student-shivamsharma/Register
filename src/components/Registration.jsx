@@ -12,7 +12,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import trapezium from "../assets/trapezium.png";
 import button from "../assets/button.png";
-import triangle from "../assets/triangle.svg";
+// import triangle from "../assets/triangle.svg";
 import bgg from "../assets/form.png";
 import logo from '../assets/name.png'
 import ramp from "../assets/ramp.png";
@@ -217,8 +217,8 @@ const Registration = () => {
         <img src={trapezium} className="mx:w-[7vw]" alt="" />
       </div>
 
-      <Link to='/' className='cursor-pointer z-50'> <img src={logo} className="absolute  mx:w-[12vw] h-14 mt-16 md:h-44 md:w-44 left-5 top-5 z-50" alt="" /> </Link>
-      <img src={ramp} className="absolute w-1/3 right-0 bottom-0 z-0" alt="" />
+      {/* <Link to='/' className='cursor-pointer z-50'> <img src={logo} className="absolute  mx:w-[12vw] h-14 mt-16 md:h-44 md:w-44 left-5 top-5 z-50" alt="" /> </Link>
+      <img src={ramp} className="absolute w-1/3 right-0 bottom-0 z-0" alt="" /> */}
 
       <div className="relative h-full md:py-5 mx:pt-11 mx:pb-2">
         <div className="flex flex-col mx:mt-10 w-fit px-2 py-1 rounded-lg mx-auto [text-shadow:0_0_10px_black] bg-black bg-opacity-70 mb-4 text-center">
@@ -559,13 +559,13 @@ const Registration = () => {
           </form>
         </div>
       </div>
-      <div className="z-0">
+      {/* <div className="z-0 bg-red-600">
         <img
           src={triangle}
           alt="img"
           className="w-full absolute bottom-0 -z-10 "
         />
-      </div>
+      </div> */}
     </div>
   );
 };
