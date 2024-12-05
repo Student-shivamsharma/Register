@@ -18,26 +18,26 @@ import Loading from "./Loading";
 
 
 const Registration = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [student_no, setStudentNumber] = useState("");
-  const [mobile, setContact] = useState("");
-  const [gender, setGender] = useState("");
-  const [branch, setBranch] = useState("");
-  const [unstop, setUnstop] = useState("");
-  const [residence, setResidence] = useState("");
+  let [name, setName] = useState("");
+  let [email, setEmail] = useState("");
+  let [student_no, setStudentNumber] = useState("");
+  let [mobile, setContact] = useState("");
+  let [gender, setGender] = useState("");
+  let [branch, setBranch] = useState("");
+  let [unstop, setUnstop] = useState("");
+  let [residence, setResidence] = useState("");
 
-  const [Name2, setName2] = useState("");
-  const [Email2, setEmail2] = useState("");
-  const [StudentNumber2, setStudentNumber2] = useState("");
-  const [Contact2, setContact2] = useState("");
-  const [gender2, setgender2] = useState("");
-  const [Branch2, setBranch2] = useState("");
-  const [unstop2, setunstop2] = useState("");
-  const [Residence2, setResidence2] = useState("");
-  const [team_name, setteamName] = useState("");
-  const [domain_name, setDomain] = useState("");
-  const [error, setError] = useState("");
+  let [Name2, setName2] = useState("");
+  let [Email2, setEmail2] = useState("");
+  let [StudentNumber2, setStudentNumber2] = useState("");
+  let [Contact2, setContact2] = useState("");
+  let [gender2, setgender2] = useState("");
+  let [Branch2, setBranch2] = useState("");
+  let [unstop2, setunstop2] = useState("");
+  let [Residence2, setResidence2] = useState("");
+  let [team_name, setteamName] = useState("");
+  let [domain_name, setDomain] = useState("");
+  let [error, setError] = useState("");
   let [isLoading, setIsLoading] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState("");
   const [next, setNext] = useState(false);
