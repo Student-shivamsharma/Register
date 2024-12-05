@@ -100,7 +100,7 @@ const Registration = () => {
       catch (error) {
         let errorMessage = "Something went wrong!";
         if (error.response) {
-          errorMessage = error.response.data?.message || "Server error!";
+          errorMessage = error.response.data?.message || "try again with valid details";
         } else if (error.request) {
           errorMessage =
             "No response from server. Please check your internet connection.";
@@ -130,7 +130,7 @@ const Registration = () => {
       student_no === "" ||
       gender === "" ||
       branch === "" ||
-      unstop === "" ||
+      // unstop === "" ||
       residence === "" ||
       mobile === ""
     ) {
@@ -157,7 +157,7 @@ const Registration = () => {
       StudentNumber2 === "" ||
       gender2 === "" ||
       Branch2 === "" ||
-      unstop2 === "" ||
+      // unstop2 === "" ||
       Residence2 === "" ||
       Contact2 === "" ||
       recaptchaToken === ""
@@ -175,10 +175,7 @@ const Registration = () => {
       return false;
     }
 
-    if (!StudentNumber2.startsWith("23")) {
-      toast.error("Student number should start with 23");
-      return false;
-    }
+    
     return true;
   };
 
@@ -368,7 +365,7 @@ const Registration = () => {
                   value={unstop}
                   onChange={(e) => setUnstop(e.target.value)}
                   className="text-sm sm:text-xl text-white w-full pl-3 sm:pl-4 pr-10 sm:pr-12 py-4 sm:py-3 rounded-lg bg-[rgb(51,118,188)] placeholder:bg-transparent"
-                  placeholder="Enter unstop Id"
+                  placeholder="Unstop Id (or NA)"
                 />
                 <div className="icon absolute right-3 text-lg sm:text-2xl flex items-center text-white">
                   {/* <span className="text-red-700 text-3xl">*</span> */}
@@ -501,7 +498,7 @@ const Registration = () => {
                   value={unstop2}
                   onChange={(e) => setunstop2(e.target.value)}
                   className="text-sm sm:text-xl text-white w-full pl-3 sm:pl-4 pr-10 sm:pr-12 py-3 sm:py-3 rounded-lg bg-[rgb(51,118,188)] placeholder:bg-transparent"
-                  placeholder="Enter unstop"
+                  placeholder="Unstop Id (or NA)"
                 />
                 <div className="icon absolute right-3 text-lg sm:text-2xl flex items-center text-white">
                   {/* <span className="text-red-700 text-3xl">*</span> */}
