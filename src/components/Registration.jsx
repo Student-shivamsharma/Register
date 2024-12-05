@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUserPlus, FaUser, FaHome } from "react-icons/fa";
@@ -14,10 +12,9 @@ import trapezium from "../assets/trapezium.png";
 import button from "../assets/button.png";
 // import triangle from "../assets/triangle.svg";
 import bgg from "../assets/form.png";
-import logo from '../assets/name.png'
+import logo from "../assets/name.png";
 import ramp from "../assets/ramp.png";
 import Loading from "./Loading";
-
 
 const Registration = () => {
   let [name, setName] = useState("");
@@ -49,8 +46,6 @@ const Registration = () => {
     console.log(trimmedToken);
     setRecaptchaToken(trimmedToken);
   };
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -91,29 +86,32 @@ const Registration = () => {
           "https://form-event.onrender.com/register",
           formData
         );
-        console.log("response" ,response);
-       console.log(response.data);
-       console.log(response.message);
+        console.log("response", response);
+        console.log(response.data);
+        console.log(response.message);
         toast.success("Registration Successful");
         clearField();
-      } 
-      catch (error) {
-      //   console.log("error" ,error);
-      //  console.log(error.message);
-      //  console.log(error.response.data.detail);
-      //  console.log("arr" , error.response.data.detail[0].msg);
-       
-      //   toast.error(error.response.data.detail);
-      //   setError(error.message);
-      if (error.response && error.response.data) {
-        const errorMsg = error.response.data.detail[0].msg; 
-        toast.error(errorMsg);  toast
-      } else {
-        toast.error('An unexpected error occurred');
-      }
-      }
-    
-      finally {
+      } catch (error) {
+        //   console.log("error" ,error);
+        //  console.log(error.message);
+        //  console.log(error.response.data.detail);
+        //  console.log("arr" , error.response.data.detail[0].msg);
+
+        //   toast.error(error.response.data.detail);
+        //   setError(error.message);
+        if (
+          error.response.data.detail == "Invalid reCAPTCHA. Please try again."
+        ) {
+          toast.error("Invalid Captcha. Try Again!");
+        }
+        if (error.response && error.response.data) {
+          const errorMsg = error.response.data.detail[0].msg;
+          toast.error(errorMsg);
+          toast;
+        } else {
+          toast.error("An unexpected error occurred");
+        }
+      } finally {
         setIsLoading(false);
       }
     }
@@ -145,6 +143,10 @@ const Registration = () => {
       toast.error("Email should end with @akgec.ac.in");
       return false;
     }
+    if (!(student_no.startsWith("23") || student_no.startsWith("24"))) {
+      toast.error("Invalid student number");
+      return false;
+    }
 
     if (mobile.length !== 10) {
       toast.error("Mobile number should be 10 digits");
@@ -173,36 +175,41 @@ const Registration = () => {
       toast.error("Email should end with @akgec.ac.in");
       return false;
     }
+    if (!(StudentNumber2.startsWith("23") || StudentNumber2.startsWith("24"))) {
+      toast.error("Invalid student number");
+      return false;
+    }
+    
+    
 
     if (Contact2.length !== 10) {
       toast.error("Mobile number should be 10 digits");
       return false;
     }
 
-    
     return true;
   };
 
   let clearField = () => {
-    name = "",
-    domain_name = "",
-      email = "",
-      student_no = "",
-      gender = "",
-      branch = "",
-      unstop = "",
-      residence = "",
-      mobile = "",
-      recaptchaToken = "",
-      Name2 = "",
-      Email2 = "",
-      StudentNumber2 = "",
-      gender2 = "",
-      Branch2 = "",
-      unstop2 = "",
-      Residence2 = "",
-      team_name = "",
-      Contact2 = "";
+    (name = ""),
+      (domain_name = ""),
+      (email = ""),
+      (student_no = ""),
+      (gender = ""),
+      (branch = ""),
+      (unstop = ""),
+      (residence = ""),
+      (mobile = ""),
+      (recaptchaToken = ""),
+      (Name2 = ""),
+      (Email2 = ""),
+      (StudentNumber2 = ""),
+      (gender2 = ""),
+      (Branch2 = ""),
+      (unstop2 = ""),
+      (Residence2 = ""),
+      (team_name = ""),
+      (Contact2 = "");
     setNext(false);
   };
 
@@ -360,7 +367,6 @@ const Registration = () => {
                     <option value="ME">ME</option>
                     <option value="CE">CE</option>
                   </select>
-                 
                 </div>
               </div>
               <div className="flex items-center rounded-lg mt-2 relative h-full">
@@ -390,7 +396,6 @@ const Registration = () => {
                   <FaHome />
                 </div>
               </div>
-
 
               <div
                 onClick={handleNext}
@@ -510,7 +515,6 @@ const Registration = () => {
                 </div>
               </div>
               <div className="flex items-center rounded-lg relative h-full mt-2">
-             
                 <select
                   value={Residence2}
                   onChange={(e) => setResidence2(e.target.value)}
