@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUserPlus, FaUser, FaHome } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -163,9 +163,17 @@ const Registration = () => {
       return false;
     }
 
-    if( !((team_name).length >= 2) || !(name.length >= 2) || !(unstop.length >= 2)){
+    if( !((team_name).length >= 2) || !(name.length >= 2)){
       toast.error("all flied must contain min 2 char");
       return false;
+    }
+
+    if(unstop){
+      if(!(unstop.length >= 5)){
+        toast.error("unstop id must contain 5 char")
+        return false
+      }
+     
     }
 
     return true;
@@ -186,21 +194,6 @@ const Registration = () => {
       toast.error("All Fields are required");
       return false;
     }
-    // if (!Email2.endsWith("@akgec.ac.in")) {
-    //   toast.error("Email should end with @akgec.ac.in");
-    //   return false;
-    // }
-    // if (!(StudentNumber2.startsWith("23") || StudentNumber2.startsWith("24"))) {
-    //   toast.error("Invalid student number");
-    //   return false;
-    // }
-    
-    
-
-    // if (Contact2.length !== 10) {
-    //   toast.error("Mobile number should be 10 digits");
-    //   return false;
-    // }
 
     return true;
   };
@@ -214,29 +207,31 @@ const Registration = () => {
       setColor("white")
     }
    }
-
+ 
+  
   let clearField = () => {
-    (name = ""),
-      (domain_name = ""),
-      (email = ""),
-      (student_no = ""),
-      (gender = ""),
-      (branch = ""),
-      (unstop = ""),
-      (residence = ""),
-      (mobile = ""),
-      (recaptchaToken = ""),
-      (Name2 = ""),
-      (Email2 = ""),
-      (StudentNumber2 = ""),
-      (gender2 = ""),
-      (Branch2 = ""),
-      (unstop2 = ""),
-      (Residence2 = ""),
-      (team_name = ""),
-      (Contact2 = "");
+    setName(""),
+    setDomain(""),
+    setEmail(""),
+    setStudentNumber(""),
+    setGender(""),
+    setBranch(""),
+    setUnstop(""),
+    setResidence(""),
+    setContact(""),
+    setRecaptchaToken(""),
+    setName2(""),
+    setEmail2(""),
+    setStudentNumber2(""),
+    setgender2(""),
+    setBranch2(""),
+    setunstop2(""),
+    setResidence2(""),
+    setteamName(""),
+    setContact2("")
     setNext(false);
   };
+
 
 
   return (
