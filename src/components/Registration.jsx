@@ -25,7 +25,7 @@ const Registration = () => {
   let [branch, setBranch] = useState("");
   let [unstop, setUnstop] = useState("");
   let [residence, setResidence] = useState("");
-
+  let [color , setColor] = useState("white")
   let [Name2, setName2] = useState("");
   let [Email2, setEmail2] = useState("");
   let [StudentNumber2, setStudentNumber2] = useState("");
@@ -96,23 +96,32 @@ const Registration = () => {
           console.log("error" ,error);
          console.log(error.message);
          console.log(error.response.data.detail);
-        //  console.log("arr" , error.response.data.detail[0].msg);
+         console.log("arr" , error.response.data.detail[0].msg);
            toast.error()
           toast.error(error.response.data.detail);
           setError(error.message);
-        // if (
-        //   error.response.data.detail == "Invalid reCAPTCHA. Please try again."
-        // ) {
-        //   toast.error("Invalid Captcha. Try Again!");
-        // }
-        // if (error.response && error.response.data) {
-        //   const errorMsg = error.response.data.detail[0].msg;
-        //   toast.error(errorMsg);
-        //   toast;
-        // } else {
-        //   toast.error("An unexpected error occurred");
-        // }
-      } finally {
+
+        if (error.response && error.response.data) {
+          const errorMsg = error.response.data.detail[0].msg;
+          if(errorMsg === "String should match pattern '^(23|24)[A-Za-z0-9]*$'"){
+            toast.error("Invalid student number")
+          }
+          else if(errorMsg == "String should match pattern '^[0-9]{10}$'"){
+            toast.error("Invalid contact number")
+          }
+          else if(errorMsg == "String should have at least 2 characters"){
+            toast.error("All field must contain at least two characters")
+          }
+          else{
+          toast.error(errorMsg);
+          }
+        } 
+        else {
+          toast.error("An unexpected error occurred");
+        }
+      }
+      
+      finally {
         setIsLoading(false);
       }
     }
@@ -154,6 +163,11 @@ const Registration = () => {
       return false;
     }
 
+    if( !((team_name).length >= 2) || !(name.length >= 2) || !(unstop.length >= 2)){
+      toast.error("all flied must contain min 2 char");
+      return false;
+    }
+
     return true;
   };
   let valid2 = () => {
@@ -172,24 +186,34 @@ const Registration = () => {
       toast.error("All Fields are required");
       return false;
     }
-    if (!Email2.endsWith("@akgec.ac.in")) {
-      toast.error("Email should end with @akgec.ac.in");
-      return false;
-    }
-    if (!(StudentNumber2.startsWith("23") || StudentNumber2.startsWith("24"))) {
-      toast.error("Invalid student number");
-      return false;
-    }
+    // if (!Email2.endsWith("@akgec.ac.in")) {
+    //   toast.error("Email should end with @akgec.ac.in");
+    //   return false;
+    // }
+    // if (!(StudentNumber2.startsWith("23") || StudentNumber2.startsWith("24"))) {
+    //   toast.error("Invalid student number");
+    //   return false;
+    // }
     
     
 
-    if (Contact2.length !== 10) {
-      toast.error("Mobile number should be 10 digits");
-      return false;
-    }
+    // if (Contact2.length !== 10) {
+    //   toast.error("Mobile number should be 10 digits");
+    //   return false;
+    // }
 
     return true;
   };
+
+  function handleColor(e){
+    setStudentNumber(e.target.value)
+    if(student_no.includes('23')){
+      setColor("green")
+    }
+    else{
+      setColor("white")
+    }
+   }
 
   let clearField = () => {
     (name = ""),
@@ -213,6 +237,7 @@ const Registration = () => {
       (Contact2 = "");
     setNext(false);
   };
+
 
   return (
     <div
@@ -314,8 +339,9 @@ const Registration = () => {
                   <input
                     type="text"
                     value={student_no}
-                    onChange={(e) => setStudentNumber(e.target.value)}
-                    className="text-sm sm:text-xl text-white w-full pl-3 sm:pl-4 pr-10 sm:pr-12 py-4 sm:py-3 rounded-lg bg-[rgb(51,118,188)] placeholder:bg-transparent"
+                    onChange={handleColor}
+                    // onChange={(e) => setStudentNumber(e.target.value)}
+                    className={`text-sm sm:text-xl text-${color}-800 w-full pl-3 sm:pl-4 pr-10 sm:pr-12 py-4 sm:py-3 rounded-lg bg-[rgb(51,118,188)] placeholder:bg-transparent`}
                     placeholder="Student no."
                   />
                   <div className="icon absolute right-3 text-lg sm:text-2xl flex items-center text-white">
