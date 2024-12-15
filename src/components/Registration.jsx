@@ -26,6 +26,8 @@ const Registration = () => {
   let [unstop, setUnstop] = useState("");
   let [residence, setResidence] = useState("");
   let [color , setColor] = useState("white")
+  let [form , setformValid] = useState(true)
+
   let [Name2, setName2] = useState("");
   let [Email2, setEmail2] = useState("");
   let [StudentNumber2, setStudentNumber2] = useState("");
@@ -97,7 +99,6 @@ const Registration = () => {
          console.log(error.message);
          console.log(error.response.data.detail);
          console.log("arr" , error.response.data.detail[0].msg);
-           toast.error()
           toast.error(error.response.data.detail);
           setError(error.message);
 
@@ -147,6 +148,7 @@ const Registration = () => {
       mobile === ""
     ) {
       toast.error("All Fields are required");
+      setformValid(false)
       return false;
     }
     if (!email.endsWith("@akgec.ac.in")) {
@@ -301,12 +303,13 @@ const Registration = () => {
           <form onSubmit={handleSubmit} className="space-y-6 ">
             {/* member 1 */}
             <div className={`${next == false ? "block" : "hidden"}`}>
+
               <div className="flex items-center rounded-lg mt-2 relative h-full">
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="text-sm sm:text-xl text-white w-full pl-3 sm:pl-4 pr-10 sm:pr-12 py-4 sm:py-3 bg-[rgb(51,118,188)] placeholder:bg-transparent rounded-lg"
+                  className={`text-sm sm:text-xl text-white  w-full pl-3 sm:pl-4 pr-10 sm:pr-12 py-4 sm:py-3 bg-[rgb(51,118,188)] placeholder:bg-transparent rounded-lg`}
                   placeholder="Enter name"
                 />
                 <div className="icon absolute right-3 text-lg sm:text-2xl flex items-center text-white">
@@ -314,6 +317,7 @@ const Registration = () => {
                 </div>
               </div>
               {/* <span className="text-red-700 mt-0 bg-blue-600 h-1">*</span> */}
+
               <div className="flex items-center rounded-lg mt-2 relative h-full">
                 <input
                   id="email"
@@ -332,7 +336,7 @@ const Registration = () => {
               <div className="md:flex block gap-2 ">
                 <div className="flex items-center rounded-lg mt-2 relative h-full">
                   <input
-                    type="text"
+                    type="number"
                     value={student_no}
                     onChange={handleColor}
                     // onChange={(e) => setStudentNumber(e.target.value)}
@@ -345,7 +349,7 @@ const Registration = () => {
                 </div>
                 <div className="flex items-center rounded-lg relative h-full mt-2">
                   <input
-                    type="text"
+                    type="number"
                     value={mobile}
                     onChange={(e) => setContact(e.target.value)}
                     className="text-sm sm:text-xl text-white w-full pl-3 sm:pl-4 pr-10 sm:pr-12 py-4 sm:py-3 rounded-lg bg-[rgb(51,118,188)] placeholder:bg-transparent"
@@ -464,7 +468,7 @@ const Registration = () => {
               <div className="md:flex block gap-2">
                 <div className="flex items-center rounded-lg relative h-full md:w-6/12 w-full mt-2">
                   <input
-                    type="text"
+                    type="number"
                     value={StudentNumber2}
                     onChange={(e) => setStudentNumber2(e.target.value)}
                     className="text-sm sm:text-xl text-white w-full pl-3 sm:pl-4 pr-10 sm:pr-12 py-3 sm:py-3 rounded-lg bg-[rgb(51,118,188)] placeholder:bg-transparent"
@@ -476,7 +480,7 @@ const Registration = () => {
                 </div>
                 <div className="flex items-center rounded-lg relative h-full mt-2 md:w-6/12  w-full">
                   <input
-                    type="text"
+                    type="number"
                     value={Contact2}
                     onChange={(e) => setContact2(e.target.value)}
                     className="text-sm sm:text-xl text-white w-full pl-3 sm:pl-4 pr-10 sm:pr-12 py-3 sm:py-3 rounded-lg bg-[rgb(51,118,188)] placeholder:bg-transparent"
@@ -555,7 +559,6 @@ const Registration = () => {
                 <div className="flex justify-center items-center mt-3 z-50">
                   <ReCAPTCHA
                     sitekey="6Lcd2CMpAAAAAKLqwdxjTgnWwzSgAGEgtl0BVOng"
-          
                     onChange={handleRecaptchaChange}
                   />
                 </div>
